@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 const cloudnary = require("cloudinary").v2;
 
 const authRoutes = require("./routes/authroute");
-const userRoutes = require("./routes/userroute");
+const userRoutes = require("./routes/userRoute");
 const postRoutes = require("./routes/postRoute");
 
 const connectMongodb = require("./db/connectMongoDB");

@@ -16,7 +16,7 @@ module.exports.getUserprofile = async(req,res)=>{
 
     } catch (error) {
         res.status(500).json({error:"Internal error"});
-        console.log("erro in getuserprofile", error.message);
+        console.log("error in getuserprofile", error.message);
     }
 }
 
