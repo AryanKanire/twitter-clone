@@ -6,6 +6,7 @@ const cloudnary = require("cloudinary").v2;
 const authRoutes = require("./routes/authroute");
 const userRoutes = require("./routes/userRoute");
 const postRoutes = require("./routes/postRoute");
+const notificationRoute = require("./routes/notificationRoute");
 
 const connectMongodb = require("./db/connectMongoDB");
 
@@ -28,6 +29,7 @@ app.use(cookieParser()); //it is used to parse cookie token
 app.use("/api/auth",authRoutes);
 app.use("/api/users",userRoutes);
 app.use("/api/post",postRoutes);
+app.use("/api/notification",notificationRoute);
 
 
 app.listen(port,()=>{

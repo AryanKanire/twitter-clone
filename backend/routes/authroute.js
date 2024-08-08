@@ -1,7 +1,8 @@
 const express = require("express");
-const { signup, login, logout,  getMe } = require("../controllers/authcontroller");
 const router = express.Router();
-const {protectRoute} = require("../middelware/protectRoute")
+
+const {protectRoute} = require("../middelware/protectRoute");
+const { signup, login, logout,  getMe } = require("../controllers/authcontroller");
 
 router.get("/me",protectRoute, getMe);
 
