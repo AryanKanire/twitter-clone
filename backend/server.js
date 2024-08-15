@@ -19,7 +19,7 @@ cloudnary.config({
 });
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json()); //to parse req.body
 app.use(express.urlencoded({extended:true})); //to parse data from urlencoded
@@ -33,6 +33,6 @@ app.use("/api/notification",notificationRoute);
 
 
 app.listen(port,()=>{
-    console.log("Server is listing on 3000");
+    console.log("Server is listing on 5000");
     connectMongodb();
 });
