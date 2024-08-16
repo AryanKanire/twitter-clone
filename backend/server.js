@@ -21,7 +21,7 @@ cloudnary.config({
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(express.json()); //to parse req.body
+app.use(express.json({limit:"1000kb"})); //to parse req.body
 app.use(express.urlencoded({extended:true})); //to parse data from urlencoded
 
 app.use(cookieParser()); //it is used to parse cookie token

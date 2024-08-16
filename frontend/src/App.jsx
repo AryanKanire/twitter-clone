@@ -16,7 +16,13 @@ function App() {
     queryKey:['authUser'],  //this is used to use it agian in any any other routes
     queryFn: async()=>{
       try {
-        const res = await fetch("/api/auth/me");
+        const res = await fetch("/api/auth/me", {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // Include other headers if required (like Authorization)
+          },
+        });
         const data = await res.json();
         
         if(data.error) return null;  
