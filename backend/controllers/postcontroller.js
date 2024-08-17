@@ -100,7 +100,9 @@ module.exports.likeunlikePost = async(req,res)=>{
         if(userLikepost){
             await Post.findByIdAndUpdate(postId,{$pull:{likes: userId}});
             await User.findByIdAndUpdate(userId,{$pull:{likePosts:postId}});
-            res.status(200).json({message:"unlike the post"});
+
+            const updateslikes = post.likes.filter((id)=>id.toString() !== userId.toString());
+            res.status(200).json(updateslikes);
         }
         else{
             post.likes.push(userId);
@@ -114,7 +116,7 @@ module.exports.likeunlikePost = async(req,res)=>{
             })
             await notification.save();
             
-            res.status(200).json({message:"liked the post"});
+            res.status(200).json(post.likes);
         }
 
     } catch (error) {
