@@ -78,7 +78,7 @@ module.exports.commentPost = async(req,res)=>{
 
         post.comments.push(comment);
         await post.save();
-        res.status(200).json(post);
+        res.status(200).json(post.comments);
 
     } catch (error) {
         console.log("Error in commentcontroller",error);
