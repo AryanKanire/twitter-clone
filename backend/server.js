@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cloudnary = require("cloudinary").v2;
+const path = require("path");
 
 const authRoutes = require("./routes/authroute");
 const userRoutes = require("./routes/userRoute");
@@ -30,6 +31,14 @@ app.use("/api/auth",authRoutes);
 app.use("/api/users",userRoutes);
 app.use("/api/post",postRoutes);
 app.use("/api/notification",notificationRoute);
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname,"../frontend/dist")));
+
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(__dirname,"../frontend/dist","index.html"))
+    })
+}
 
 
 app.listen(port,()=>{

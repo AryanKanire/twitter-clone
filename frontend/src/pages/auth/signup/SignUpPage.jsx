@@ -7,7 +7,7 @@ import {MdOutlineMail} from "react-icons/md";
 import {FaUser} from "react-icons/fa";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 function SignUpPage() {
@@ -18,6 +18,8 @@ function SignUpPage() {
         fullName:"",
         password:"",
     });
+
+    const queryClient = useQueryClient();
 
     const {mutate , isError , isPending, error } = useMutation({
       mutationFn: async({email,username,fullName,password}) =>{     //we stored http://localhost:3000 at vite.config.js
@@ -41,6 +43,7 @@ function SignUpPage() {
       },
       onSuccess: ()=>{
         toast.success("Account created succefuly");
+        queryClient.invalidateQueries({ queryKey: ["authUser"] });
       },
     })
 

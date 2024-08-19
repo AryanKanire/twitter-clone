@@ -78,7 +78,12 @@ module.exports.commentPost = async(req,res)=>{
 
         post.comments.push(comment);
         await post.save();
-        res.status(200).json(post.comments);
+        const updatedpost = await Post.findById(postId)
+        .populate({
+            path:'comments.user',
+            select:'fullName username profileImg'
+        })
+        res.status(200).json(updatedpost.comments);
 
     } catch (error) {
         console.log("Error in commentcontroller",error);
@@ -135,15 +140,11 @@ module.exports.allpost = async(req,res)=>{
             select:"-password",
         });
 
-        if(posts.length===0){
-            res.status(200).json([])
-        }
-
-        res.status(200).json(posts);
+        res.status(200).json(posts.length ? posts : []); 
 
     } catch (error) {
         console.log("error in all post controller",error);
-        res.status(200).json({error:"internal error"});
+        res.status(500).json({error:"internal error"});
     }
 }
 
