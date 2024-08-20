@@ -5,7 +5,7 @@ const cloudnary = require("cloudinary").v2;
 const path = require("path");
 
 const authRoutes = require("./routes/authroute");
-const userRoutes = require(path.resolve(__dirname, './routes/userRoute'));
+const userRoutes = require("./routes/userRoute");
 const postRoutes = require("./routes/postRoute");
 const notificationRoute = require("./routes/notificationRoute");
 
