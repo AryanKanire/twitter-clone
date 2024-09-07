@@ -35,8 +35,5 @@ Make sure you have the following installed:
 - [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
 
-### Clone the Repository
 
-```bash
-git clone https://github.com/your-username/twitter-clone.git
-cd twitter-clone
+
